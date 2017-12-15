@@ -8,12 +8,12 @@ Ambiente usato per lo sviluppo ed il testing:
 3) aver installato sqlite3 per la parte alfanumerica e spatialite per la parte cartografica
 
 4) archivi catastali:
-che non sono qui distribuiti, i files di dati di archivio catasto.db e catasto_cart_4326.sqlite 
-di cometenza per il vostro comune dovete premurarvi di scaricarli ed ottenerli nel formato adatto ... 
-seguendo le indicazioni indicate al sito opencatamap https://github.com/marcobra/opencatamap
+non sono qui distribuiti, i files di dati di archivio catasto.db e catasto_cart_4326.sqlite, 
+di competenza per il vostro comune, dovete premurarvi di scaricarli ed trasformarli nel formato adatto..., 
+seguendo le indicazioni riportate al sito opencatamap https://github.com/marcobra/opencatamap
 
 
 Note: 
-E' in sviluppo ed e' prevista ma non ancora implementata la possiblbiltà di trasferire i dati su
+E' in sviluppo e prevista, ma non ancora implementata, la possiblbiltà di trasferire i dati su
 database nel rdbms: postgresql/postgis 
 
