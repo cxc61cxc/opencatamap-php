@@ -107,5 +107,5 @@ include "testata.php";
 </body>
 </html>
 <!-- disattivato LOGIN
-<?php } ?>
+<?php # } ?>
 -->
