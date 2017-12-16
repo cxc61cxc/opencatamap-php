@@ -1,4 +1,6 @@
-<?php if (isset($_COOKIE["login"])){ ?>
+// login disattivato
+# <?php if (isset($_COOKIE["login"])){ ?>
+
 <!DOCTYPE html>
 <html lang="it">
 	 <meta charset="UTF-8"> 
@@ -56,9 +58,11 @@ include "testata.php";
 <br>
 </body>
 </html>
+<!-- login disattivato
 <?php } 
+-->
 
-else{
-header("Location: http://127.0.0.1/ubucomu/login.php");
-}
-?>
+#else{
+#header("Location: http://127.0.0.1/ubucomu/login.php");
+#}
+#?>
