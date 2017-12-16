@@ -1,4 +1,5 @@
-<?php if (isset($_COOKIE["login"])){ ?>
+// disattivato login
+# <?php if (isset($_COOKIE["login"])){ ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -115,4 +116,4 @@ $db = new SQLite3('catasto.db');
 
 </body>
 </html>
-<?php } ?>
+<!-- disattivato login <?php } ?> -->
