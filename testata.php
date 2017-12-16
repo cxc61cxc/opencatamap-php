@@ -110,8 +110,9 @@ $db->close();
 	<?php
 	print "<p><a href=http://sister.agenziaentrate.gov.it/Main/index.jsp><small>" . $dt . "</p><p>" . $df . "</small></a></p>";
 	?>
-	
-	<p><br><br>U.O. Sistemi informatici / Innovazione tecnologica</p>
+	/* eventuale dicitura a sinistra
+	<p><br><br>pinco pallo</p>
+	*/
 	</td>
 	<td style="text-align: center; width: 20%">
 	<?php
@@ -127,8 +128,9 @@ print "COMUNE di " . $com;
 	echo '
 <p>  Marco Braida - Carlo A. Nicolini</p>
 <p><a href="http://giscarrara/ubucomu/logout.php">logout</a></p>
-
+/* eventuale dicitura a destra
 <p><br><br>U.O. Progettazione e gestione PRG</p>
+*/
 ';
 	?>
 	</td>
