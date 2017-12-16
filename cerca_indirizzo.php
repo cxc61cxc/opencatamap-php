@@ -118,4 +118,4 @@ $db = new SQLite3('catasto.db');
 
 </body>
 </html>
-<!-- disattivato login <?php } ?> -->
+<!-- disattivato login <?php # } ?> -->
