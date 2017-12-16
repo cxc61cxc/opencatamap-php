@@ -149,12 +149,16 @@ $parts = Explode('/', $currentFile); # estratto l'array con / abbiamo catasto5c 
 
 if ($parts[count($parts) - 1] != 'index.php' ) # count($parts)= 3 (perchè?) -1 = 2 1=catasto5c 2=index.php
 {
+	/* disattivato LOGIN
 	if (isset($_COOKIE["login"]))
 		{
+	*/
 		echo '
 		<br><a href="index.php"><span style="font-size: 12px">Torna al menu principale</span></a>
 		';
+	/* disattivato LOGIN
 		}
+	*/
 }
 else{
 	print "<br>";
