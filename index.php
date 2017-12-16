@@ -58,9 +58,9 @@ include "testata.php";
 <br>
 </body>
 </html>
-<!-- login disattivato
+<!-- login disattivato -->
 #<?php } 
--->
+
 
 #else{
 #header("Location: http://127.0.0.1/ubucomu/login.php");
