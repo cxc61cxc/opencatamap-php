@@ -1,5 +1,10 @@
-// login disattivato
-# <?php if (isset($_COOKIE["login"])){ ?>
+
+<!-- / login disattivato
+portare fuori dal commento e remmare..... # if (iss...
+
+ <?php # if (isset($_COOKIE["login"])){ ?>
+
+-->
 
 <!DOCTYPE html>
 <html lang="it">
