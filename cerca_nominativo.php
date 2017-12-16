@@ -1,4 +1,5 @@
-<?php if (isset($_COOKIE["login"])){ ?>
+// disattivato LOGIN
+# <?php if (isset($_COOKIE["login"])){ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,4 +89,6 @@ include "testata.php";
 
 </body>
 </html>
+<!-- disattivato LOGIN
 <?php } ?>
+-->
