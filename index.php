@@ -63,11 +63,11 @@ include "testata.php";
 <br>
 </body>
 </html>
-<!-- login disattivato -->
-#<?php } 
+<!-- login disattivato 
+<?php # } 
 
-
-#else{
-#header("Location: http://127.0.0.1/ubucomu/login.php");
+# else{
+# header("Location: http://127.0.0.1/ubucomu/login.php");
 #}
-#?>
+?>
+-->
