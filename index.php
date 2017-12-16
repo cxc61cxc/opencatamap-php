@@ -59,7 +59,7 @@ include "testata.php";
 </body>
 </html>
 <!-- login disattivato
-<?php } 
+#<?php } 
 -->
 
 #else{
