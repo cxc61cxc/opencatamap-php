@@ -167,14 +167,26 @@ while ($table_tit = $risultato_tit->fetchArray(SQLITE3_ASSOC)) {
 $idSog=$table_tit['idSogg'];
 $denomin=$table_tit['denominazione']." ".$table_tit['com_nasc']." ".$table_tit['data_nasc'];
     print "<tr>";
+    // disattivato LOGIN
+    /*
     if (isset($_COOKIE["login"]))
               {
-              
+                
+           */    
     print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
+     
+    // disattivato LOGIN
+    /*
      }
+     
               else
               {
-print "<td style='text-align:left';>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              }
+                
+print "<td style='text-align:left';>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              
+
+
+}
+*/
              
     //print "<td style='text-align:left';>" . $table_tit['denominazione'] . "</td>";
     print "<td>" . $table_tit['com_nasc'] . "</td>"; 
