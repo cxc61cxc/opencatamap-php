@@ -31,6 +31,25 @@ Cosi come gli archivi essi vanno un poco difesi dall'accesso ed il conseguente d
 va fatto ripartire il server apache per controlare siano attive le modifiche
 
 
+Per dare a PHP la possibilità leggere i files sqlite editare il file php.ini
+
+sudo apt-get install libsqlite3-mod-spatialite
+
+poi sincerarsi vi sia la segeunte istruzione nel file php.ini
+
+gksudo gedit /etc/php/7.1/apache2/php.ini
+
+impostare il sentiero dove si trovano le estensioni per sqlite3 in pratica dove si trova il file mod_spatialite.so :
+
+[sqlite3]
+sqlite3.extension_dir = /usr/lib/x86_64-linux-gnu
+
+
+Riavviare il server web
+sudo service apache2 restart
+
+
+
 
 Note: 
 E' in sviluppo e prevista, ma non ancora implementata, la possibilità di trasferire i dati su
