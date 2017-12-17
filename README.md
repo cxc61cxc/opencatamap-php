@@ -5,6 +5,10 @@ Ambiente usato per lo sviluppo ed il testing:
 1) computer con ubuntu 16.04
 1) server apache2 
 2) ambiente php su apache2 configurato, la versione testata php 5.5 
+con installato il modulo per la laettura dei file sqlite
+
+sudo apt-get install php-sqlite3
+
 3) aver installato sqlite3 per la parte alfanumerica e spatialite per la parte cartografica
 
 4) archivi catastali:
@@ -24,7 +28,6 @@ Cosi come gli archivi essi vanno un poco difesi dall'accesso ed il conseguente d
 </Directory>
 
 va fatto ripartire il server apache per controlare siano attive le modifiche
-
 
 
 
