@@ -2,16 +2,16 @@
 Opencatamap php aggiunge e si integra con opencatamap ottenendo funzionalità aggiuntive
 
 Ambiente usato per lo sviluppo ed il testing:
-1) computer con ubuntu 16.04 (funzionante anche su release di Ubuntu successive)
-1) server apache2 
-2) ambiente php su apache2 configurato, la versione testata php 5.5 o successiva 
+* computer con ubuntu 16.04 (funzionante anche su release di Ubuntu successive)
+* server apache2 
+* ambiente php su apache2 configurato, la versione testata php 5.5 o successiva 
  con installato il modulo per l'accesso ai files sqlite
 
 ```sudo apt-get install php-sqlite3```
 
-3) aver installato sqlite3 per la parte alfanumerica e spatialite per la parte cartografica
+* aver installato sqlite3 per la parte alfanumerica e spatialite per la parte cartografica (vedere più sotto)
 
-4) gli archivi catastali:
+* gli archivi catastali:
 non sono distribuiti, i files di dati di archivio catasto.db e catasto_cart_4326.sqlite,
 di competenza del vostro comune, dovete premurarvi di scaricarli ed trasformarli nel formato adatto..., 
 seguendo le indicazioni riportate al sito opencatamap https://github.com/marcobra/opencatamap
