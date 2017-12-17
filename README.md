@@ -24,29 +24,32 @@ Non e' al momento previsto nessun login o accesso limitato da un login con utent
 Cosi come gli archivi essi vanno un poco difesi dall'accesso ed il conseguente download diretto tramite alcune direttive che neghino tale tipo di accesso in apache2.conf si attiva la possibilità che venga letto dal server un file .htaccess   
 (il file .htaccess e' già presente nei sorgenti)
 
+```
 <Directory /var/www/html/Comune/catasto_cc_10>
      AllowOverride All
 </Directory>
+```
 
-va fatto ripartire il server apache per controlare siano attive le modifiche
-
+va fatto ripartire il server apache per controllare che siano attive le modifiche
+```sudo service apache2 restart```
 
 Per dare a PHP la possibilità leggere i files sqlite editare il file php.ini
 
-sudo apt-get install libsqlite3-mod-spatialite
+```sudo apt-get install libsqlite3-mod-spatialite```
 
-poi sincerarsi vi sia la segeunte istruzione nel file php.ini
+poi sincerarsi vi sia la seguente istruzione nel file php.ini, aprire il file di configurazione:
 
-gksudo gedit /etc/php/7.1/apache2/php.ini
+```gksudo gedit /etc/php/7.1/apache2/php.ini```
 
-impostare il sentiero dove si trovano le estensioni per sqlite3 in pratica dove si trova il file mod_spatialite.so :
+ed impostare il sentiero in conformià a dove si trovano le estensioni per sqlite3, in pratica dove si trova il file mod_spatialite.so :
 
+```
 [sqlite3]
 sqlite3.extension_dir = /usr/lib/x86_64-linux-gnu
-
+```
 
 Riavviare il server web
-sudo service apache2 restart
+```sudo service apache2 restart```
 
 
 
