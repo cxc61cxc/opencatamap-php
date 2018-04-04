@@ -1,5 +1,5 @@
 <html>
-   <meta charset="UTF-8"> 
+	 <meta charset="UTF-8"> 
 <body>
 <head>
 
@@ -38,6 +38,7 @@ $query="
   select 
 DISTINCT tit.idSoggetto as idSog,
 tit.titoloNonCod as titplus,
+tit.tipoSoggetto as tipsog,
 
 
 CASE
@@ -94,7 +95,7 @@ if ($totRows>0)
                 echo "<hr>";
 
 
-                print "<form id=\"ListaIdForm\" method=\"POST\" action=\"nctr_soggetto_multi_diviso.php\">";
+                print "<form id=\"ListaIdForm\" method=\"POST\" action=\"nctr_soggetto_multi.php\">";
                 print "<div id=\"checkboxlist\">";
 
                 print "<table>";
@@ -105,13 +106,14 @@ if ($totRows>0)
                 {
 
                     $idSog= $table['idSog'];
+                    $tipo=$table['tipsog'];
                     $denomin=$table['denomin'] ." " . $table['titplus']. " " .$table['lnasc']. " " .$table['dnasc']." ".$table['codice_fiscale'];
                     print "<tr>";
 
                     print "<td><div><input type=\"checkbox\" value=\"" . $idSog . "," . $denomin . "\" class=\"chk\"></div></td>\n";
 
-                    print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
-                    print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
+                    print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
+                    print "<td style='text-align:left';>" . $table['denomin'] . " " .$table['tit.tipoSoggetto'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['lnasc'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['dnasc'] . "</td>"; 
                     print "<td>" . $table['codice_fiscale'] . "</td>";
@@ -126,9 +128,7 @@ print "</table>";
 print "</div>";
 print '<input type="hidden" id="idSogList" name="idSogList" value="" />';
 #print '<input type="hidden" id="nSogList" name="nSogList" value="" />';
-print "<br>";
-print '<input type="button" value="Cerca i selezionati dettaglio diviso" id="buttonClassDiviso"> ';
-print '<input type="button" value="Cerca i selezionati dettaglio unito" id="buttonClassUnito"> ';
+print '<input type="submit" value="Cerca i valori selezionati" id="buttonClass"> ';
 print ' </div>';
 
 
@@ -141,17 +141,10 @@ print "</form>";
 /* if the page has been fully loaded we add two click handlers to the button */
 $(document).ready(function () {
   /* Get the checkboxes values based on the class attached to each check box */
-  $("#buttonClassDiviso").click(function() {
-      document.getElementById("ListaIdForm").action="nctr_soggetto_multi_diviso.php";
+  $("#buttonClass").click(function() {
       getValueUsingClass();
   });
   
-  $("#buttonClassUnito").click(function() {
-      document.getElementById("ListaIdForm").action="nctr_soggetto_multi_unito.php";
-      getValueUsingClass();
-  });
-  
-
   /* Get the checkboxes values based on the parent div id */
   $("#buttonParent").click(function() {
       getValueUsingParentTag();
@@ -176,9 +169,14 @@ function getValueUsingClass(){
 
   /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
   if(selected.length > 1){
-    // se ci sono selezionati fa' il submit del form
-    document.getElementById("ListaIdForm").submit(); 
+    //alert("valore della variabile document.getElementById('idSogList').value " + document.getElementById('idSogList').value); 
+    //open("./nctr_soggetto_multi.php?idSogList=" + selected + "&n=Selezione multivalore")
 
+//  document.ListaIdForm.idSogList.value = chkArray;
+ //  document.forms["ListaIdForm"].submit();
+
+    // document.ListaIdForm.idSogList.value = idSogList;
+    //open("./nctr_soggetto_multi.php?idSogList" + "&n=Selezione multivalore")
   }else{
     alert("Selezionate almeno una riga tramite il checkbox");
    return false;
@@ -199,7 +197,7 @@ function getValueUsingParentTag(){
   
   /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
   if(selected.length > 1){
-    alert("Hai selezionato " + selected); 
+    alert("You have selected " + selected); 
   }else{
     alert("Please at least one of the checkbox"); 
   }

@@ -66,7 +66,7 @@ if ($totRow){
 if ($totRow>0){
 print "<h3>ricerca per</h3><p>foglio " . $f . " mappale " . $m ."</p>";
 echo "<hr>";
-print "<h3> CATASTO TERRENI </h3>";
+print "<h3>RICERCA CATASTO TERRENI</h3><br>";
 
 echo "<hr>";
 if ($totRow>1){
@@ -84,7 +84,7 @@ while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) {
     print "<tr>";
     print "<td>";
     print "<p> <a href=\"catasto_particella_2geojson.php?fg=$f&map=$m\" target=\"_blank\"> mappa</a></p>";
-    print "<div id=\"NCTR\">";
+print "<div id=\"NCTR\">";
     print "</td>";
     print "<td>" . $table['foglio'] . "</td>";
     print "<td>" . $table['numero'] . "</td>";
@@ -165,28 +165,17 @@ print "<tr style='vertical-align:top'><th style='text-align:left';>denominazione
 
 while ($table_tit = $risultato_tit->fetchArray(SQLITE3_ASSOC)) {
 $idSog=$table_tit['idSogg'];
+$tipo=$table_tit['tipo'];
 $denomin=$table_tit['denominazione']." ".$table_tit['com_nasc']." ".$table_tit['data_nasc'];
     print "<tr>";
-    // disattivato LOGIN
-    /*
     if (isset($_COOKIE["login"]))
               {
-                
-           */    
-    print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
-     
-    // disattivato LOGIN
-    /*
+              
+    print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
      }
-     
               else
               {
-                
-print "<td style='text-align:left';>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              
-
-
-}
-*/
+print "<td style='text-align:left;'>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              }
              
     //print "<td style='text-align:left';>" . $table_tit['denominazione'] . "</td>";
     print "<td>" . $table_tit['com_nasc'] . "</td>"; 
@@ -286,7 +275,7 @@ left join
   WHERE 
   ltrim(foglio,'0') ='" . $f . "' AND ltrim(numero,'0')='" . $m ."'  AND 'IDENTIFICATIVI_IMMOBILIARI'.'idImmobile'='UNITA_IMMOBILIARI'.'idImmobile' and 'UNITA_IMMOBILIARI'.IdMutazioneFinale='' and categoria !=''
   GROUP BY 'IDENTIFICATIVI_IMMOBILIARI'.'idImmobile'
-  ORDER BY   'UNITA_IMMOBILIARI'.'categoria' asc, piano ASC, 'IDENTIFICATIVI_IMMOBILIARI'.'foglio' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'numero' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'subalterno'
+  ORDER BY   piano ASC, 'IDENTIFICATIVI_IMMOBILIARI'.'foglio' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'numero' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'subalterno'
 asc";
 
 
@@ -298,7 +287,7 @@ if ($totRow_nceu>0){
 echo "<hr>";
 ?>
 
-<h3> CATASTO URBANO </h3>
+<h3>RICERCA CATASTO URBANO</h3>
 
 <?php
 

@@ -38,6 +38,8 @@ $idSog=trim($_GET["idSog"]);
 
 $denomin=($_GET["n"]);
 
+$tipo=($_GET["tipo"]);
+
 include './testata.php';	
 ?>
 
@@ -92,6 +94,7 @@ distinct tit.idParticella as idPart,
 tit.idSoggetto,
 ltrim(pa.foglio,'0') as fg,
 ltrim(pa.numero,'0') as map,
+ltrim(pa.subalterno,'0') as sub,
 CQ.decodifica as qualita,
 ltrim(CP.classe,'0') as cl,
 CP.ettari*10000+CP.are*100+CP.centiare as superf,
@@ -106,7 +109,7 @@ left join CARATTERISTICHE_PARTICELLA as CP on CP.idParticella=idPart
 left join COD_DIRITTO as CD on tit.codDiritto=CD.codice
 left join COD_QUALITA as CQ on CP.codQualita=CQ.codice
 
-where tit.idSoggetto = '" . $idSog . "' and tit.idParticella=pa.idParticella  
+where tit.idSoggetto = '" . $idSog . "' and tit.idParticella=pa.idParticella  and tipoSoggetto= '" . $tipo ."'
 GROUP BY idPart  
 ORDER BY fg ASC, map ASC
 ";
@@ -136,7 +139,7 @@ if ($totRows>1){
 
 	<?php
 	}
-  print "<p> <a href=\"catasto_particelle_2geojson.php?idSog=$idSog&n=$denomin\" target=\"_blank\"> mappa...</a></p>";
+  print "<p> <a href=\"catasto_particelle_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\"> mappa...</a></p>";
 print "<div id=\"NCTR\">";
 /*
 23.03.2017 eliminato show-hide
@@ -149,7 +152,7 @@ print "<div id=\"NCTR\">";
 
 print "<table>";
 
-print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>qualita</th><th>cl</th><th>superf</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
+print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>qualita</th><th>cl</th><th>superf</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
 $num=1;
 
 
@@ -170,6 +173,7 @@ while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) {
     print "<td style='text-align:left';>" . "<p><a href=\"nctr_results.php?f=$f&m=$m&n=$denomin\" target=\"_self\">visura</a></p>" . "</td>";
     print "<td><b>" . $table['fg'] . "</b></td>";
     print "<td><b>" . $table['map'] . "</b></td>";
+    print "<td><b>" . $table['sub'] . "</b></td>";
     //print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
     print "<td>" . $table['qualita'] . "</td>";
     print "<td>" . $table['cl'] . "</td>";
@@ -236,7 +240,7 @@ left join INDIRIZZI on INDIRIZZI.idImmobile=II.idImmobile
 left join COD_DIRITTO as CD on CD.codice = tit.codDiritto
 left join UNITA_IMMOBILIARI as UI on UI.idImmobile=tit.idImmobile and UI.IdMutazioneFinale='' 
 left join COD_TOPONIMO as CT on INDIRIZZI.toponimo=CT.codice
-where  tit.idSoggetto = '" . $idSog . "' and II.idImmobile = tit.idImmobile AND categoria!=''  
+where  tit.idSoggetto = '" . $idSog . "' and II.idImmobile = tit.idImmobile AND categoria!='' and tipoSoggetto= '" . $tipo ."' 
 
 ORDER BY fg ASC, map ASC, sub ASC";
 
@@ -256,7 +260,7 @@ if ($totRows_nceu>0){
 	<?php
     	}
     	
-      print "<p></p><a href=\"catasto_nceu_2geojson.php?idSog=$idSog&n=$denomin\" target=\"_blank\">mappa...</a></p>";
+      print "<p></p><a href=\"catasto_nceu_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\">mappa...</a></p>";
 
       print "<div id=\"NCEU\">";
 

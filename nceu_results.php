@@ -244,9 +244,10 @@ print "<br>";
 
 
 }
-
+/* distict 
+variante SELECT DISTINCT */
 $query_tit="
-select DISTINCT 
+select  
 'TITOLARITA'.idSoggetto as idSog,
 'TITOLARITA'.'idImmobile',
 'TITOLARITA'.'titoloNonCod' as titplus,
@@ -326,8 +327,10 @@ left join 'COD_DIRITTO' ON 'TITOLARITA'.'codDiritto'='COD_DIRITTO'.'codice'
 WHERE
 
 'TITOLARITA'.'idImmobile'='" . $id . "' and 'IDENTIFICATIVI_IMMOBILIARI'.'idImmobile'='" . $id . "' 
-GROUP BY idSog
+GROUP By idSogg
 ";
+/* ultima riga query */
+/* GROUP BY idSog */
 
 
 $risultato_tit = $db->query($query_tit);
@@ -343,10 +346,11 @@ print "<tr><p>restituiti " . $totRows . " risultati" . "</p></tr>";
 print "<table>";
 
 
-print "<tr><th></th><th></th><th style='text-align:left';>denominazione</th><th>luogo di<br>nascita</th><th>data di<br>nascita</th><th>codice fiscale</th><th>diritto</th><th>quota</th></tr>";
+print "<tr><th></th><th></th><th style='text-align:left;'>denominazione</th><th>luogo di<br>nascita</th><th>data di<br>nascita</th><th>codice fiscale</th><th>diritto</th><th>quota</th></tr>";
 
 while ($table_tit = $risultato_tit->fetchArray(SQLITE3_ASSOC)) {
 $idSog=$table_tit['idSog'];
+$tipo=$table_tit['tipo'];
 
 //flavio 
 //cosa è $table? non la tova ... 
@@ -395,7 +399,7 @@ $data=$table_tit['data_nasc'];
   */
    //print "</p></td>"
 
-    print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&n=$nominativo\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
+    print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$nominativo\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
 
      }
               else
