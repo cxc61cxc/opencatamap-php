@@ -1,0 +1,16 @@
+15 marzo 2018
+operazione per trasformare shp in layer DB.sqlite
+per aggiornamento cartografia catastale su OCM
+
+https://faimsproject.atlassian.net/wiki/spaces/FAIMS/pages/3014730/Importing+Shape+files+into+Spatialite+Database
+
+
+$ spatialite_tool -i -shp <Input> -d <SpatialiteDB.sqlite> -t <Table name> -g Geometry -c utf-8 -s 3857
+
+<Input> 	 	-> particelle
+<SpatialiteDB.sqlite> 	-> spatialiteDB.sqlite	-> catasto_cart_4326.sqlite
+<Table_name>		-> particelle
+3857			-> 4326
+
+
+mi ha funzionato alla prima!
