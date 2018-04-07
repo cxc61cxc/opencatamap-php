@@ -30,7 +30,7 @@ da provare!
 - carico i file cxf in memory
 - esporto lo shp particelle con "salva con nome" esri-> epsg 4326... in una cartella (la mia è ~/Scrivania/shp2sqlite/) nominandolo particelle.shp
 - nella cartella tra i file deve essere presente il file particelle.prj che dovrebbe contenere i riferimenti geografici wgs84
-- lanciare con ./shp2sqlite_python.sh
+- lanciare con ./shp2spatialite_python.sh
 - viene creato il file catasto_cart_4326.sqlite
 - aprirlo con sqlitestudio e creare un campo id -> bigint che corrisponda a ofg_fid
 - lanciare la query :
