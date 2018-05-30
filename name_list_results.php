@@ -1,6 +1,6 @@
 <html>
 	 <meta charset="UTF-8"> 
-<body>
+<body onLoad="checkAll('ListaIdForm',null,'conta')">  
 <head>
 
 <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
@@ -8,6 +8,48 @@
 <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="cxc.css" type="text/css" media="all">
+
+
+<script type="text/javascript" language="javascript">
+function checkAll(formname, elem, modo)
+{
+  var checkboxes = new Array(); 
+  var nck = 0 ; 
+  var totnck = 0 ; 
+  checkboxes = document[formname].getElementsByTagName('input');
+ 
+  for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox' && checkboxes[i].id=='cbdet' )   {
+      totnck=totnck+1;
+		  if (modo=='toggle') {
+      		checkboxes[i].checked = !checkboxes[i].checked;
+  			}
+		if (modo=='sel_unsel_all') {
+
+           checkboxes[i].checked = elem.checked;
+         }
+       if (checkboxes[i].checked) {
+	      nck=nck+1;
+      }
+    }
+  }
+ 
+ document.getElementById('textsele').textContent =  nck + "/" + totnck;
+ 
+ }
+ 
+</script>
+
+
+<script type="text/javascript">
+window.onclick = function(e) { 
+  	if (e.target.id == 'cbdet') {
+  		checkAll('ListaIdForm',null,'conta');
+		}
+};
+
+
+</script>
 
 </head>
 
@@ -95,12 +137,22 @@ if ($totRows>0)
                 echo "<hr>";
 
 
-                print "<form id=\"ListaIdForm\" method=\"POST\" action=\"nctr_soggetto_multi.php\">";
+                print "<form id=\"ListaIdForm\" name=\"ListaIdForm\" method=\"POST\" action=\"nctr_soggetto_multi.php\">";
                 print "<div id=\"checkboxlist\">";
 
                 print "<table>";
 
-                print "<tr ><th></th><th></th><th style='text-align:left';>denominazione</th><th style='text-align:left';>luogo di<br>nascita</th><th style='text-align:left';>data di<br>nascita</th><th>codice<br>fiscale</th></tr>";
+
+print "<tr ><th> 
+
+<div id='textsele'>tutti</div>
+
+   
+<input type=\"checkbox\"   onclick=\"javascript:checkAll('ListaIdForm', this, 'sel_unsel_all');\" href=\"javascript:void();\"  /> <br><div>sel all</div>
+
+
+
+</th><th style=\"text-align:left\";><b></b></th><th style='text-align:left';>denominazione</th><th style='text-align:left';>luogo di<br>nascita</th><th style='text-align:left';>data di<br>nascita</th><th>codice<br>fiscale</th></tr>";
 
                 while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) 
                 {
@@ -110,7 +162,7 @@ if ($totRows>0)
                     $denomin=$table['denomin'] ." " . $table['titplus']. " " .$table['lnasc']. " " .$table['dnasc']." ".$table['codice_fiscale'];
                     print "<tr>";
 
-                    print "<td><div><input type=\"checkbox\" value=\"" . $idSog . "," . $denomin . "\" class=\"chk\"></div></td>\n";
+                    print "<td><div><input type=\"checkbox\" id=\"cbdet\" value=\"" . $idSog . "," . $denomin . "\" class=\"chk\"></div></td>\n";
 
                     print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
                     print "<td style='text-align:left';>" . $table['denomin'] . " " .$table['tit.tipoSoggetto'] . "</td>"; 
