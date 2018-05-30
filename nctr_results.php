@@ -275,7 +275,7 @@ left join
   WHERE 
   ltrim(foglio,'0') ='" . $f . "' AND ltrim(numero,'0')='" . $m ."'  AND 'IDENTIFICATIVI_IMMOBILIARI'.'idImmobile'='UNITA_IMMOBILIARI'.'idImmobile' and 'UNITA_IMMOBILIARI'.IdMutazioneFinale='' and categoria !=''
   GROUP BY 'IDENTIFICATIVI_IMMOBILIARI'.'idImmobile'
-  ORDER BY   piano ASC, 'IDENTIFICATIVI_IMMOBILIARI'.'foglio' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'numero' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'subalterno'
+  ORDER BY   'foglio' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'numero' asc, 'IDENTIFICATIVI_IMMOBILIARI'.'subalterno'
 asc";
 
 
