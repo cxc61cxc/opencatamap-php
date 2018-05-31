@@ -39,6 +39,7 @@ $idSog=trim($_GET["idSog"]);
 $denomin=($_GET["n"]);
 
 $tipo=($_GET["tipo"]);
+$n=($_GET["ricerca"]);
 
 include './testata.php';	
 ?>
@@ -121,7 +122,8 @@ set_time_limit(420);
 
 $risultato = $db->query($query);
 $totRows=SqliteNumRows($risultato);
-if ($totRows>0){
+if ($totRows>0)
+{
 
 
 
@@ -188,6 +190,38 @@ while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) {
 print "</table>"; 
 
 
+}
+ELSE
+{
+  
+
+
+
+?>
+
+<!-- se il risultato della ricerca non è > 0 esegue lo java script... e riporta alla pagina di ricerca -->
+
+
+  <script type="text/javascript">
+
+
+    function doRedirect() {
+      //Genera il link alla pagina che si desidera raggiungere
+      location.href = "name_list_results.php?n=<?php echo $n; ?>";
+    }
+    
+    //Questo è il messaggio di attesa di redirect in corso…
+    document.write("Nessun risultato... sarai riportato alla maschera di ricerca");
+    
+    //Fa partire il redirect dopo 10 secondi da quando l'intermprete JavaScript ha rilevato la funzione
+    window.setTimeout("doRedirect()", 3000);
+
+  </script>
+
+
+<!-- FINE java -->
+
+<?php
 }
 
 print "</div>";

@@ -1,6 +1,6 @@
 <html>
-	 <meta charset="UTF-8"> 
-<body onLoad="checkAll('ListaIdForm',null,'conta')">  
+   <meta charset="UTF-8"> 
+<body onLoad="contaselected('ListaIdForm',null)">  
 <head>
 
 <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="cxc.css" type="text/css" media="all">
 
 
-<script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">// <![CDATA[
 function checkAll(formname, elem, modo)
 {
   var checkboxes = new Array(); 
@@ -21,31 +21,64 @@ function checkAll(formname, elem, modo)
   for (var i=0; i<checkboxes.length; i++)  {
     if (checkboxes[i].type == 'checkbox' && checkboxes[i].id=='cbdet' )   {
       totnck=totnck+1;
-		  if (modo=='toggle') {
-      		checkboxes[i].checked = !checkboxes[i].checked;
-  			}
-		if (modo=='sel_unsel_all') {
+      if (modo=='toggle') {
+          checkboxes[i].checked = !checkboxes[i].checked;
+        }
+    if (modo=='sel_unsel_all') {
 
            checkboxes[i].checked = elem.checked;
          }
        if (checkboxes[i].checked) {
-	      nck=nck+1;
+        nck=nck+1;
       }
     }
   }
  
- document.getElementById('textsele').textContent =  nck + "/" + totnck;
+ document.getElementById('textsele').textContent = nck + "/" + totnck;
  
  }
  
-</script>
 
+function contaselected(formname, elem)
+{
+  var checkboxes = new Array(); 
+  var nck = 0 ; 
+  var totnck = 0 ; 
+  checkboxes = document[formname].getElementsByTagName('input');
+   for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox' && checkboxes[i].id=='cbdet' )   {
+      totnck=totnck+1;
+      if (checkboxes[i].checked) {
+        nck=nck+1;
+      }
+    }
+  }
+ 
+ document.getElementById('textsele').textContent = nck + "/" + totnck;
+
+ 
+ if (totnck<1) {
+           document.getElementById('buttonClass').style.visibility = 'hidden';
+      } else {
+           document.getElementById('buttonClass').style.visibility = 'visible';
+   }
+
+
+
+
+
+
+ }
+
+
+// ]]></script>
 
 <script type="text/javascript">
 window.onclick = function(e) { 
-  	if (e.target.id == 'cbdet') {
-  		checkAll('ListaIdForm',null,'conta');
-		}
+  // alert(e.target.parentNode);
+  if (e.target.id == 'cbdet') {
+  contaselected('ListaIdForm',null);
+}
 };
 
 
@@ -56,7 +89,7 @@ window.onclick = function(e) {
 <?php
 
 $n=trim(htmlspecialchars($_GET["n"]));
-
+$ritorna=$n;
 include "testata.php";
 
 //print "<br>";
@@ -145,10 +178,9 @@ if ($totRows>0)
 
 print "<tr ><th> 
 
-<div id='textsele'>tutti</div>
-
-   
-<input type=\"checkbox\"   onclick=\"javascript:checkAll('ListaIdForm', this, 'sel_unsel_all');\" href=\"javascript:void();\"  /> <br><div>sel all</div>
+               
+   <p>tutti</p>
+<input type=\"checkbox\"   onclick=\"javascript:checkAll('ListaIdForm', this, 'sel_unsel_all');\" href=\"javascript:void();\"  /> <br><div id='textsele'></div>
 
 
 
@@ -162,9 +194,15 @@ print "<tr ><th>
                     $denomin=$table['denomin'] ." " . $table['titplus']. " " .$table['lnasc']. " " .$table['dnasc']." ".$table['codice_fiscale'];
                     print "<tr>";
 
-                    print "<td><div><input type=\"checkbox\" id=\"cbdet\" value=\"" . $idSog . "," . $denomin . "\" class=\"chk\"></div></td>\n";
+                    print "<td><div><input type=\"checkbox\" id=\"cbdet\" value=\"" . $idSog . "," . $denomin . "\" class=\"chk\">
 
-                    print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
+                    <input method=\"Get\" type=\"hidden\" value=\"". $n ."\" name=\"n\";>
+                    </div></td>\n";
+                    ?>
+
+                    <?php
+
+                    print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&ricerca=$n&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
                     print "<td style='text-align:left';>" . $table['denomin'] . " " .$table['tit.tipoSoggetto'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['lnasc'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['dnasc'] . "</td>"; 
