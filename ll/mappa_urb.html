@@ -182,8 +182,8 @@ var geostyle = {
     function addDataToMap(data, map) {
         mygeojson = L.geoJson(data, { style: geostyle, 
         onEachFeature: function(feature, layer) {
-            var popupText = "<b>Foglio:</b> " + feature.properties.Foglio
-                + "<br><b>Mappale:</b> " + feature.properties.Mappale
+            var popupText = "<b>Foglio:</b> " + feature.properties.foglio
+                + "<br><b>Mappale:</b> " + feature.properties.mappale
                 + "<br><b>sub:</b> " + feature.properties.sub
                 + "<br><b>indirizzo:</b> " + feature.properties.indirizzo
                 + "<br><b>titolo:</b> " + feature.properties.titolo
@@ -194,7 +194,7 @@ var geostyle = {
                 + "<br><b>rendita:</b> " + feature.properties.rendita
                 + "<br><b>idImmobile:</b> " + feature.properties.idImm
                 + "<br>"
-                + "<br><b><a href=../nctr_results.php?f="+feature.properties.Foglio+"&m="+feature.properties.Mappale+" target=_blank> NCTR </a></b>"
+                + "<br><b><a href=../nctr_results.php?f="+feature.properties.foglio+"&m="+feature.properties.mappale+" target=_blank> NCTR </a></b>"
                 + "<br><b><a href=../nceu_results.php?id="+feature.properties.idImm+" target=_blank> visura NCEU </a></b>";
             layer.bindPopup(popupText); 
             layer.on({mouseover: highlightFeature,mouseout: resetHighlight,click: zoomToFeature});
@@ -224,7 +224,7 @@ info.onAdd = function (map) {
  // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = '<h4>Foglio/mappale</h4>' +  (props ?
-        'Foglio <b>' + props.Foglio + '</b><br /> mappale ' + props.Mappale 
+        'Foglio <b>' + props.foglio + '</b><br /> mappale ' + props.mappale 
         : 'Passa mouse su mappale');
 };
 
@@ -271,7 +271,7 @@ info.addTo(map);
             color: 'black',
             //dashArray: '3',
             fillOpacity: 0.2,
-            fillColor: getColor(feature.properties.Foglio)
+            fillColor: getColor(feature.properties.foglio)
         };
     }
 

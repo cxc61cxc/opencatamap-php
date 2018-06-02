@@ -184,8 +184,8 @@ var geostyle = {
     function addDataToMap(data, map) {
         mygeojson = L.geoJson(data, { style: geostyle, 
         onEachFeature: function(feature, layer) {
-            var popupText = "<b>Foglio:</b> " + feature.properties.Foglio
-                + "<br><b>Mappale:</b> " + feature.properties.Mappale 
+            var popupText = "<b>Foglio:</b> " + feature.properties.foglio
+                + "<br><b>Mappale:</b> " + feature.properties.mappale 
                 + "<br><b>denominazione:</b> " + feature.properties.denominazione
                 + "<br><b>titolo:</b> " + feature.properties.titolo
                 + "<br><b>qualita:</b> " + feature.properties.qualita
@@ -224,7 +224,7 @@ info.onAdd = function (map) {
  // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = '<h4>Foglio/mappale</h4>' +  (props ?
-        'Foglio <b>' + props.Foglio + '</b><br /> mappale ' + props.Mappale 
+        'Foglio <b>' + props.foglio + '</b><br /> mappale ' + props.mappale 
         : 'Passa mouse su mappale');
 };
 
@@ -274,7 +274,7 @@ info.addTo(map);
             color: 'black',
             //dashArray: '3',
             fillOpacity: 0.2,
-            fillColor: getColor(feature.properties.Foglio)
+            fillColor: getColor(feature.properties.foglio)
         };
     }
 
