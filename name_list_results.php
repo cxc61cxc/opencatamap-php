@@ -191,6 +191,7 @@ print "<tr ><th>
 
                     $idSog= $table['idSog'];
                     $tipo=$table['tipsog'];
+                    $nomin=$table['denomin'];
                     $denomin=$table['denomin'] ." " . $table['titplus']. " " .$table['lnasc']. " " .$table['dnasc']." ".$table['codice_fiscale'];
                     print "<tr>";
 
@@ -203,7 +204,7 @@ print "<tr ><th>
                     <?php
 
                     print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&ricerca=$n&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
-                    print "<td style='text-align:left';>" . $table['denomin'] . " " .$table['tit.tipoSoggetto'] . "</td>"; 
+                    print "<td style='text-align:left';>" . $nomin . " " .$tipo . "</td>"; 
                     print "<td style='text-align:left';>" . $table['lnasc'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['dnasc'] . "</td>"; 
                     print "<td>" . $table['codice_fiscale'] . "</td>";
