@@ -1,6 +1,6 @@
 <html>
 	 <meta charset="UTF-8"> 
-<body onLoad="javascript:ricorsiva('10')">
+<body>
 <head>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
