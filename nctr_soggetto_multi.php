@@ -258,7 +258,7 @@ function dettaglio_urbano($db,$idSog,$SogList,$denomin ) {
 
         //print "<span style='font-size:10px'><h4>ricerca per foglio <b>" . per . "</h4></span></b>";
         print "<table>";
-        print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf.</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
+        print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
 
         ## imposto il limite di tempo, in secondi, per eseguire la query . Di default è 30 s
 
