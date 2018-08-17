@@ -170,7 +170,7 @@ function dettaglio_terreni($db,$idSoggs,$denomin ) {
 
             //$idParticella=$table['idParticella'];
             
-            print "<tr style='vertcal-align:middle';>";
+            print "<tr style='vertical-align:middle';>";
             print "<td></td>";
             
             print "<td style='text-align:right';><p><small>" . $num .")</small></p></td>";
