@@ -141,6 +141,7 @@ CASE
        THEN ('UNITA_IMMOBILIARI'.'consistenza'||' mq')
        ELSE ''
        END as consistenza,
+       'UNITA_IMMOBILIARI'.'superficie',
        trim('UNITA_IMMOBILIARI'.'zona','0') as zona,
        '€ '||' '||'UNITA_IMMOBILIARI'.'renditaEuro' as rendita,
        (ltrim('UNITA_IMMOBILIARI'.'piano1','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano2','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano3','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano4','0')) as piano,
@@ -179,7 +180,7 @@ print "<tr><p>restituiti " . $totRows . " risultati" . "</p></tr>";
 if ($totRows>0){
   
 print "<tr><td colspan=\"8\"></td></tr>";
-print "<tr><th>-----</th><th>zona</th><th>cat</th><th>cl</th><th>consist</th><th>rendita</th><th>piano</th><th>indirizzo</th></tr>";
+print "<tr><th>-----</th><th>zona</th><th>cat</th><th>cl</th><th>consist</th><th>superf.</th><th>rendita</th><th>piano</th><th>indirizzo</th></tr>";
 
 
 while ($table_nceu = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) {
@@ -193,6 +194,7 @@ while ($table_nceu = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) {
     print "<td>" . $table_nceu['categoria'] . "</td>";
     print "<td>" . $table_nceu['classe'] . "</td>";
     print "<td>" . $table_nceu['consistenza'] . "</td>"; 
+    print "<td>" . $table_nceu['superficie'] . "</td>"; 
     print "<td>" . $table_nceu['rendita'] . "</td>";
     print "<td>" . $table_nceu['piano'] . "</td>";
     print "<td>" . $table_nceu['indirizzo'] . "</td>"; 
@@ -276,6 +278,7 @@ CASE
        THEN ('UNITA_IMMOBILIARI'.'consistenza'||' mq')
        ELSE ''
        END as consistenza,
+       'UNITA_IMMOBILIARI'.'superficie',
        '€ '||' '||'UNITA_IMMOBILIARI'.'renditaEuro' as rendita,
        (ltrim('UNITA_IMMOBILIARI'.'piano1','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano2','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano3','0')||' '||ltrim('UNITA_IMMOBILIARI'.'piano4','0')) as piano,
        'COD_TOPONIMO'.'decodifica'||' '||'INDIRIZZI'.'indirizzo'||' ' ||ltrim('INDIRIZZI'.'civico1','0')||' ' ||ltrim('INDIRIZZI'.'civico2','0')||' ' ||ltrim('INDIRIZZI'.'civico3','0') as indirizzo,
