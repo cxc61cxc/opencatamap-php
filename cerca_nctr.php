@@ -1,7 +1,3 @@
-<!-- disattivato LOGIN 
-<?php # if (isset($_COOKIE["login"])){ ?>
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +81,7 @@ include "testata.php";
 <label><h3>Ricerca per foglio e mappale</h3></label>
 <form class="myForm" method="get" enctype="application/x-www-form-urlencoded" action="nctr_results.php">
 <label class="input"  for="f">foglio</label> 
-<input type="text" name="f" value=""  required placeholder="foglio">
+<input type="text" name="f" value=""  required autofocus placeholder="foglio">
 <label class="input" for="m">mappale</label> 
 <input type="text" name="m" required placeholder="mappale">
 
@@ -106,6 +102,4 @@ include "testata.php";
 
 </body>
 </html>
-<!-- disattivato LOGIN
-<?php # } ?>
--->
+
