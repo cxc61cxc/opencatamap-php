@@ -254,7 +254,6 @@ function dettaglio_urbano($db,$idSog,$SogList,$denomin ) {
     
         print "<p></p><a href=\"catasto_nceu_2geojson.php?idSog=$idSog&n=$denomin\" target=\"_blank\">mappa...</a></p>";
         print "<div id=\"NCEU\">";
-        echo "<hr>";
 
         //print "<span style='font-size:10px'><h4>ricerca per foglio <b>" . per . "</h4></span></b>";
         print "<table>";
