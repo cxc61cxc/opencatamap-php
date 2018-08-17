@@ -204,7 +204,7 @@ print "<tr ><th>
                     <?php
 
                     print "<td>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&ricerca=$n&tipo=$tipo&n=$denomin\" target=\"_self\">".$idSog."</a></p>" . "</td>";
-                    print "<td style='text-align:left';>" . $nomin . " " .$tipo . "</td>"; 
+                    print "<td style='text-align:left';>" . $nomin . "</td>"; 
                     print "<td style='text-align:left';>" . $table['lnasc'] . "</td>"; 
                     print "<td style='text-align:left';>" . $table['dnasc'] . "</td>"; 
                     print "<td>" . $table['codice_fiscale'] . "</td>";
