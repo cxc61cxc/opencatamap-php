@@ -1,4 +1,5 @@
 <?php
+
 # use SQLite3;
 
 $db = new SQLite3('catasto.db');
