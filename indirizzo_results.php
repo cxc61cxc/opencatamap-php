@@ -1,9 +1,6 @@
-<!-- disattivato LOGIN 
-<?php # if (isset($_COOKIE["login"])){ ?>
--->
 <html>
 	 <meta charset="UTF-8"> 
-<body onLoad="javascript:ricorsiva('10')">
+<body>
 <head>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -164,12 +161,5 @@ $db->close();
 
 </body>
 </html>
-<!-- disattivato LOGIN
-<?php } 
 
-# else{
-# header("Location: http://giscarrara/ubucomu/login.php");
-}
-?>
--->
 
