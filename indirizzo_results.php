@@ -54,7 +54,8 @@ select
 ltrim('II'.'foglio','0') as foglio,
 ltrim('II'.'numero','0') as numero,
 ltrim('II'.'subalterno','0') as sub,
- ltrim('UI'.'zona','0') as zona,
+ltrim('UI'.'zona','0') as zona,
+ltrim(UI.superficie) as superficie,
 
 
 ltrim('UI'.'categoria') as categoria,
@@ -126,7 +127,7 @@ echo "<hr>";
 print "<table>";
 
 
-print "<tr><th>     </th><th>foglio</th><th>mappale</th><th>sub</th><th>zona</th><th>cat</th><th>cl</th><th>consist</th><th>rendita</th><th>piano</th><th>indirizzo</th></tr>";
+print "<tr><th>     </th><th>foglio</th><th>mappale</th><th>sub</th><th>zona</th><th>cat</th><th>cl</th><th>consist</th><th>superf.</th><th>rendita</th><th>piano</th><th>indirizzo</th></tr>";
 
 while ($table_nceu = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) {
     // $nRighe = $table_nceu['count'];
@@ -143,6 +144,7 @@ while ($table_nceu = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) {
     print "<td>" . $table_nceu['categoria'] . "</td>";
     print "<td>" . $table_nceu['classe'] . "</td>";
     print "<td>" . $table_nceu['consistenza'] . "</td>"; 
+    print "<td>" . $table_nceu['superficie'] . "</td>"; 
     print "<td>" . $table_nceu['rendita'] . "</td>";
     print "<td>" . $table_nceu['piano'] . "</td>";
     
