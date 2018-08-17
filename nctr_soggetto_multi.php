@@ -201,6 +201,7 @@ function dettaglio_urbano($db,$idSog,$SogList,$denomin ) {
     ltrim(II.numero,'0') as map,
     ltrim(II.subalterno,'0') as sub,
     ltrim(UI.zona,'0') as zona,
+    ltrim(UI.superficie) as superficie,
     CASE 
             WHEN 'UI'.'categoria'<>'A10'
             THEN replace( 'UI'.'categoria', '0', '/' )
@@ -257,7 +258,7 @@ function dettaglio_urbano($db,$idSog,$SogList,$denomin ) {
 
         //print "<span style='font-size:10px'><h4>ricerca per foglio <b>" . per . "</h4></span></b>";
         print "<table>";
-        print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
+        print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf.</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
 
         ## imposto il limite di tempo, in secondi, per eseguire la query . Di default è 30 s
 
@@ -276,6 +277,7 @@ function dettaglio_urbano($db,$idSog,$SogList,$denomin ) {
             print "<td>" . $table['zona'] . "</td>";
             print "<td>" . $table['categoria'] . "</td>";
             print "<td>" . $table['consistenza'] . "</td>";
+            print "<td>" . $table['superficie'] . "</td>";
 
             print "<td>" . $table['piano'] . "</td>";
             print "<td>" . $table['indirizzo'] . "</td>";
