@@ -154,7 +154,7 @@ print "<div id=\"NCTR\">";
 
 print "<table>";
 
-print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>qualita</th><th>cl</th><th>superf</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
+print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>qualita</th><th>cl</th><th>superf.</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
 $num=1;
 
 
@@ -202,23 +202,6 @@ ELSE
 <!-- se il risultato della ricerca non è > 0 esegue lo java script... e riporta alla pagina di ricerca -->
 
 
-  <script type="text/javascript">
-
-
-    function doRedirect() {
-      //Genera il link alla pagina che si desidera raggiungere
-      location.href = "name_list_results.php?n=<?php echo $n; ?>";
-    }
-    
-    //Questo è il messaggio di attesa di redirect in corso…
-    document.write("Nessun risultato... sarai riportato alla maschera di ricerca");
-    
-    //Fa partire il redirect dopo 10 secondi da quando l'intermprete JavaScript ha rilevato la funzione
-    window.setTimeout("doRedirect()", 3000);
-
-  </script>
-
-
 <!-- FINE java -->
 
 <?php
@@ -258,6 +241,7 @@ CASE
        THEN ('UI'.'consistenza'||' mq')
        ELSE ''
        END as consistenza,
+       'UI'.'superficie',
        
 (ltrim('UI'.'piano1','0')||' '||ltrim('UI'.'piano2','0')||' '||ltrim('UI'.'piano3','0')||' '||ltrim('UI'.'piano4','0')) as piano,
 
@@ -312,7 +296,7 @@ if ($totRows_nceu>0){
 
     print "<table>";
 
-    print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
+    print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf.</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
 
     ## imposto il limite di tempo, in secondi, per eseguire la query . Di default è 30 s
 
@@ -333,7 +317,7 @@ if ($totRows_nceu>0){
         print "<td>" . $table['zona'] . "</td>";
         print "<td>" . $table['categoria'] . "</td>";
         print "<td>" . $table['consistenza'] . "</td>";
-
+        print "<td>" . $table['superficie'] . "</td>";
         print "<td>" . $table['piano'] . "</td>";
         print "<td>" . $table['indirizzo'] . "</td>";
         print "<td>" . $table['rendita'] . "</td>";
