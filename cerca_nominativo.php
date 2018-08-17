@@ -1,6 +1,3 @@
-<!-- disattivato LOGIN 
-<?php # if (isset($_COOKIE["login"])){ ?>
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,13 +80,11 @@ include "testata.php";
 <label><h3>Ricerca nominativa</h3></label>
 <form class="myForm" method="get" enctype="application/x-www-form-urlencoded" action="name_list_results.php">
 <label class="input"  for="n"></label> 
-<input type="text" size ="80px" name="n" value=""  required placeholder="nominativo da cercare: cognome nome">
+<input type="text" size ="80px" name="n" value=""  required autofocus placeholder="nominativo da cercare: cognome nome">
 
 <input type="submit" value="INVIA">
 </form>
 
 </body>
 </html>
-<!-- disattivato LOGIN
-<?php #} ?>
--->
+
