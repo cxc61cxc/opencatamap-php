@@ -316,7 +316,8 @@ function getValueUsingParentTag(){
   document.write("Nessun risultato... sarai riportato alla maschera di ricerca");
   
   //Fa partire il redirect dopo 10 secondi da quando l'intermprete JavaScript ha rilevato la funzione
-  window.setTimeout("doRedirect()", 10000);
+  //Fa partire il redirect dopo 2 secondi da quando l'intermprete JavaScript ha rilevato la funzione
+  window.setTimeout("doRedirect()", 2000);
 
 </script>
 

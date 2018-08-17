@@ -21,16 +21,17 @@ function f_nctr() {
 }
 </script>
 
-<script>
-function f_nceu() {
-    var x = document.getElementById('NCEU');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
+  <script>
+  function f_nceu() 
+  {
+      var x = document.getElementById('NCEU');
+      if (x.style.display === 'none') {
+          x.style.display = 'block';
+      } else {
+          x.style.display = 'none';
+      }
+  }
+  </script>
 
 <?php
 
@@ -67,14 +68,16 @@ print "<span style='font-size:13px'><b>Risultati per il nominativo <b>" . $denom
 
 //print "<br>";
 
-#---------------------------------------------- totale dei numeri di righe ritornate
-function SqliteNumRows($ris){
-    $numRows = 0;
-    while($row = $ris->fetchArray()){
-        ++$numRows;
-    }
-    return $numRows;
-}
+  #---------------------------------------------- totale dei numeri di righe ritornate
+  function SqliteNumRows($ris)
+  {
+      $numRows = 0;
+      while($row = $ris->fetchArray())
+      {
+          ++$numRows;
+      }
+      return $numRows;
+  }
 
 
 
@@ -123,89 +126,77 @@ set_time_limit(420);
 $risultato = $db->query($query);
 $totRows=SqliteNumRows($risultato);
 if ($totRows>0)
-{
+    {
 
 
 
 
 
 
-echo "<hr>";
-print "<h4>Nuovo Catasto Terreni Revisionato </h4>";
+      echo "<hr>";
+      print "<h4>Nuovo Catasto Terreni Revisionato </h4>";
 
-if ($totRows>1){
-	print "<p>estratti da terreni ". $totRows . " elementi </p>";
-	?>
-	<button onclick="f_nctr()">mostra/nascondi</button>
-
-
-	<?php
-	}
-  print "<p> <a href=\"catasto_particelle_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\"> mappa...</a></p>";
-print "<div id=\"NCTR\">";
-/*
-23.03.2017 eliminato show-hide
-
-  print "<div id=\"terreni\" class=\"toggle_t\">"; 
-
-*/
-//echo "<hr>";
+      if ($totRows>1)
+      {
+      	print "<p>estratti da terreni ". $totRows . " elementi </p>";
+      	?>
+      	<button onclick="f_nctr()">mostra/nascondi</button>
 
 
-print "<table>";
+      	<?php
+    	}
+      print "<p> <a href=\"catasto_particelle_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\"> mappa...</a></p>";
+      print "<div id=\"NCTR\">";
+      /*
+      23.03.2017 eliminato show-hide
 
-print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>qualita</th><th>cl</th><th>superf.</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
-$num=1;
+        print "<div id=\"terreni\" class=\"toggle_t\">"; 
 
-
-
-while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) {
-
-  $idPart=$table['idPart'];
-  $f=$table['fg'];
-  $m=$table['map'];
-
-    //$idParticella=$table['idParticella'];
-    
-    print "<tr>";
-    print "<td></td>";
-    
-    print "<td style='text-align:right';><p><small>" . $num .")</small></p></td>";
-    
-    print "<td style='text-align:left';>" . "<p><a href=\"nctr_results.php?f=$f&m=$m&n=$denomin\" target=\"_self\">visura</a></p>" . "</td>";
-    print "<td><b>" . $table['fg'] . "</b></td>";
-    print "<td><b>" . $table['map'] . "</b></td>";
-    print "<td><b>" . $table['sub'] . "</b></td>";
-    //print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
-    print "<td>" . $table['qualita'] . "</td>";
-    print "<td>" . $table['cl'] . "</td>";
-    print "<td>" . $table['superf'] . "</td>";
-    print "<td>" . $table['RD'] . "</td>";
-    print "<td>" . $table['RA'] . "</td>";
-    print "<td>" . $table['diritto'] . "</td>";
-    print "<td>" . $table['quota'] . "</td>";
-    print "</tr>";
-    ++$num;
-}  
-print "</table>"; 
+      */
+      //echo "<hr>";
 
 
-}
-ELSE
-{
-  
+      print "<table>";
+
+      print "<tr ><th></th><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>qualita</th><th>cl</th><th>superf.</th><th>RD</th><th>RA</th><th>diritto</th><th>quota</th></tr>";
+      $num=1;
 
 
 
-?>
+        while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) 
+        {
 
-<!-- se il risultato della ricerca non è > 0 esegue lo java script... e riporta alla pagina di ricerca -->
+          $idPart=$table['idPart'];
+          $f=$table['fg'];
+          $m=$table['map'];
+
+            //$idParticella=$table['idParticella'];
+            
+            print "<tr style='vertical-align:middle';>";
+            print "<td></td>";
+            
+            print "<td style='text-align:right';><p><small>" . $num .")</small></p></td>";
+            
+            print "<td style='text-align:left';>" . "<p><a href=\"nctr_results.php?f=$f&m=$m&n=$denomin\" target=\"_self\">visura</a></p>" . "</td>";
+            print "<td><b>" . $table['fg'] . "</b></td>";
+            print "<td><b>" . $table['map'] . "</b></td>";
+            print "<td><b>" . $table['sub'] . "</b></td>";
+            //print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
+            print "<td>" . $table['qualita'] . "</td>";
+            print "<td>" . $table['cl'] . "</td>";
+            print "<td>" . $table['superf'] . "</td>";
+            print "<td>" . $table['RD'] . "</td>";
+            print "<td>" . $table['RA'] . "</td>";
+            print "<td>" . $table['diritto'] . "</td>";
+            print "<td>" . $table['quota'] . "</td>";
+            print "</tr>";
+            ++$num;
+        } 
+    print "</table>"; 
 
 
-<!-- FINE java -->
+    }
 
-<?php
-}
 
 print "</div>";
 echo "<br>";
@@ -264,72 +255,75 @@ ORDER BY fg ASC, map ASC, sub ASC";
 
 $risultato_nceu = $db->query($query_nceu);
 $totRows_nceu=SqliteNumRows($risultato_nceu);
-if ($totRows_nceu>0){
+if ($totRows_nceu>0)
+      {
 
-    echo "<hr>";
-    print "<h4>Nuovo Catasto Edilizio Urbano</h4>";
+          echo "<hr>";
+          print "<h4>Nuovo Catasto Edilizio Urbano</h4>";
 
-    if ($totRows_nceu>1){
-    	print "<p>estratti da urbano ". $totRows_nceu ." elementi -</p> ";
-    	?>
-	<button onclick="f_nceu()">mostra/nascondi</button>
-
-
-	<?php
-    	}
-    	
-      print "<p></p><a href=\"catasto_nceu_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\">mappa...</a></p>";
-
-      print "<div id=\"NCEU\">";
+          if ($totRows_nceu>1)
+          {
+          	print "<p>estratti da urbano ". $totRows_nceu ." elementi -</p> ";
+          	?>
+      	     <button onclick="f_nceu()">mostra/nascondi</button>
 
 
+      	   <?php
+          }
+          	
+            print "<p></p><a href=\"catasto_nceu_2geojson.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_blank\">mappa...</a></p>";
 
-    
-    echo "<hr>";
-    ?>
+            print "<div id=\"NCEU\">";
 
-  
 
-    <?php
 
-    //print "<span style='font-size:10px'><h4>ricerca per foglio <b>" . per . "</h4></span></b>";
+          
+          echo "<hr>";
+          ?>
 
-    print "<table>";
-
-    print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf.</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
-
-    ## imposto il limite di tempo, in secondi, per eseguire la query . Di default è 30 s
-
-    set_time_limit(360);
-
-    $num=1;
-    while ($table = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) {
-
-        //$idParticella=$table['idParticella'];
         
-        print "<tr>";
-        print "<td style='text-align:right';><p><small>" . $num .")</small></p></td>";
-        print "<td style='text-align:left';>" . "<p><a href=\"nceu_results.php?id=". $table['idImm'] . "\" target=\"_self\">visura</a></p>" . "</td>";
-        print "<td><b>" . $table['fg'] . "</b></td>";
-        print "<td><b>" . $table['map'] . "</b></td>";
-        //print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
-        print "<td><b>" . $table['sub'] . "</b></td>";
-        print "<td>" . $table['zona'] . "</td>";
-        print "<td>" . $table['categoria'] . "</td>";
-        print "<td>" . $table['consistenza'] . "</td>";
-        print "<td>" . $table['superficie'] . "</td>";
-        print "<td>" . $table['piano'] . "</td>";
-        print "<td>" . $table['indirizzo'] . "</td>";
-        print "<td>" . $table['rendita'] . "</td>";
-        print "<td>" . $table['diritto'] . "</td>";
-        print "<td>" . $table['quota'] . "</td>";
-        print "</tr>";
-        ++$num;
-    }  
-    print "</table>"; 
 
-   
-  }
+          <?php
+
+          //print "<span style='font-size:10px'><h4>ricerca per foglio <b>" . per . "</h4></span></b>";
+
+          print "<table>";
+
+          print "<tr ><th></th><th></th><th>foglio</th><th>map</th><th>sub</th><th>zona</th><th>cat</th><th>consistenza</th><th>superf.</th><th>piano</th><th>indirizzo</th><th>rendita</th><th>diritto</th><th>quota</th></tr>";
+
+          ## imposto il limite di tempo, in secondi, per eseguire la query . Di default è 30 s
+
+          set_time_limit(360);
+
+          $num=1;
+          while ($table = $risultato_nceu->fetchArray(SQLITE3_ASSOC)) 
+            {
+
+              //$idParticella=$table['idParticella'];
+              
+              print "<tr style='vertical-align:middle';>";
+              print "<td style='text-align:right';><p><small>" . $num .")</small></p></td>";
+              print "<td style='text-align:left';>" . "<p><a href=\"nceu_results.php?id=". $table['idImm'] . "\" target=\"_self\">visura</a></p>" . "</td>";
+              print "<td><b>" . $table['fg'] . "</b></td>";
+              print "<td><b>" . $table['map'] . "</b></td>";
+              //print "<td style='text-align:left';>" . $table['denomin'] . "</td>"; 
+              print "<td><b>" . $table['sub'] . "</b></td>";
+              print "<td>" . $table['zona'] . "</td>";
+              print "<td>" . $table['categoria'] . "</td>";
+              print "<td>" . $table['consistenza'] . "</td>";
+              print "<td>" . $table['superficie'] . "</td>";
+              print "<td>" . $table['piano'] . "</td>";
+              print "<td>" . $table['indirizzo'] . "</td>";
+              print "<td>" . $table['rendita'] . "</td>";
+              print "<td>" . $table['diritto'] . "</td>";
+              print "<td>" . $table['quota'] . "</td>";
+              print "</tr>";
+              ++$num;
+            }  
+          print "</table>"; 
+
+         
+      }
 
   print "</div>";
 

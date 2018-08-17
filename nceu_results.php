@@ -5,7 +5,7 @@
 <head>
 
 <link rel="stylesheet" href="cxc.css" type="text/css" media="all">
-<link rel="stylesheet" href="../anagrafe/anagrafe/css/css_cxc.css">
+
 </head>
 
 <?php

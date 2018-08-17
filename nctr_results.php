@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="cxc.css" type="text/css" media="all">
 </head>
 <?php
-if (!$_GET["f"] or !$_GET["m"]){
+if (!$_GET["f"] or !$_GET["m"])
+{
   echo "Parametri foglio e/o mappale mancanti !";
   exit;
 }
+
 $f=htmlspecialchars($_GET["f"]);
 $m=htmlspecialchars($_GET["m"]);
 
@@ -23,9 +25,11 @@ include "testata.php";
 
 
 
-function SqliteNumRows($ris){
+function SqliteNumRows($ris)
+{
     $numRows = 0;
-    while($row = $ris->fetchArray()){
+    while($row = $ris->fetchArray())
+    {
         ++$numRows;
     }
     return $numRows;
@@ -59,17 +63,17 @@ ltrim(foglio,'0') ='" . $f . "' AND ltrim(numero,'0')='" . $m ."' AND
 
 $risultato = $db->query($query);
 $totRow=SqliteNumRows($risultato);
-if ($totRow){
 
-}
 
-if ($totRow>0){
+if ($totRow>0)
+{
 print "<h3>ricerca per</h3><p>foglio " . $f . " mappale " . $m ."</p>";
 echo "<hr>";
 print "<h3>RICERCA CATASTO TERRENI</h3><br>";
 
 echo "<hr>";
-if ($totRow>1){
+if ($totRow>1)
+{
 print "<tr><p>restituiti " . $totRows . " risultati" . "</p></tr>";
 }
 
@@ -77,14 +81,15 @@ print "<table>";
 
 print "<tr><th> </th><th>foglio</th><th>mappale</th><th>sub</th><th>qualita</th><th>cl</th><th>area</th><th>RA</th><th>RD</th></tr>";
 
-while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) {
+while ($table = $risultato->fetchArray(SQLITE3_ASSOC)) 
+  {
 
     $idParticella=$table['idParticella'];
     
     print "<tr>";
     print "<td>";
     print "<p> <a href=\"catasto_particella_2geojson.php?fg=$f&map=$m\" target=\"_blank\"> mappa</a></p>";
-print "<div id=\"NCTR\">";
+    print "<div id=\"NCTR\">";
     print "</td>";
     print "<td>" . $table['foglio'] . "</td>";
     print "<td>" . $table['numero'] . "</td>";
@@ -153,54 +158,58 @@ $risultato_tit = $db->query($query_tit);
 $totRows=SqliteNumRows($risultato_tit);
 
 
-if ($totRows>0){
+if ($totRows>0)
+{
 
+      print "</table>"; 
+
+      print "<p class = \"sl\">t i t o l a r i</p>";
+
+      print "<table>";
+
+      print "<tr style='vertical-align:top'><th style='text-align:left';>denominazione</th><th>comune di<br>nascita</th><th>data di<br>nascita</th><th>cod fiscale</th><th>diritto</th><th>quota</th></tr>";
+
+      while ($table_tit = $risultato_tit->fetchArray(SQLITE3_ASSOC)) 
+        {
+        $idSog=$table_tit['idSogg'];
+        $tipo=$table_tit['tipo'];
+        $denomin=$table_tit['denominazione']." ".$table_tit['com_nasc']." ".$table_tit['data_nasc'];
+            print "<tr>";
+                if (isset($_COOKIE["login"]))
+                {
+                          
+                print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
+                }
+                else
+                {
+                print "<td style='text-align:left;'>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              
+                }
+                     
+        //print "<td style='text-align:left';>" . $table_tit['denominazione'] . "</td>";
+        print "<td>" . $table_tit['com_nasc'] . "</td>"; 
+        print "<td>" . $table_tit['data_nasc'] . "</td>";
+        print "<td>" . $table_tit['cod_fisc'] . "</td>"; 
+        print "<td>" . $table_tit['diritto'] . "</td>";
+        print "<td>" . $table_tit['quota'] . "</td>";
+        print "</tr>";
+
+
+
+        }
+
+
+
+      }  
 print "</table>"; 
-
-print "<p class = \"sl\">t i t o l a r i</p>";
-
-print "<table>";
-
-print "<tr style='vertical-align:top'><th style='text-align:left';>denominazione</th><th>comune di<br>nascita</th><th>data di<br>nascita</th><th>cod fiscale</th><th>diritto</th><th>quota</th></tr>";
-
-while ($table_tit = $risultato_tit->fetchArray(SQLITE3_ASSOC)) {
-$idSog=$table_tit['idSogg'];
-$tipo=$table_tit['tipo'];
-$denomin=$table_tit['denominazione']." ".$table_tit['com_nasc']." ".$table_tit['data_nasc'];
-    print "<tr>";
-    if (isset($_COOKIE["login"]))
-              {
-              
-    print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
-     }
-              else
-              {
-print "<td style='text-align:left;'>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              }
-             
-    //print "<td style='text-align:left';>" . $table_tit['denominazione'] . "</td>";
-    print "<td>" . $table_tit['com_nasc'] . "</td>"; 
-    print "<td>" . $table_tit['data_nasc'] . "</td>";
-    print "<td>" . $table_tit['cod_fisc'] . "</td>"; 
-    print "<td>" . $table_tit['diritto'] . "</td>";
-    print "<td>" . $table_tit['quota'] . "</td>";
-    print "</tr>";
-
-
-
-}
-
-
-
-}  
-print "</table>"; 
 }
 }  
 
-ELSE {
+ELSE 
+{
 ?>
-
+<!-- QUESTO E' DA ELIMINARE .... non serve -->
 <!-- se il risultato della ricerca non è > 0 esegue lo java script... e riporta alla pagina di ricerca -->
-
+<!--
 
 <script type="text/javascript">
 
@@ -213,10 +222,12 @@ ELSE {
   document.write("Nessun risultato... sarai riportato alla finestra di ricerca");
   
   //Fa partire il redirect dopo 10 secondi da quando l'intermprete JavaScript ha rilevato la funzione
-  window.setTimeout("doRedirect()", 10000);
+  //Fa partire il redirect dopo 2 secondi da quando l'intermprete JavaScript ha rilevato la funzione
+  window.setTimeout("doRedirect()", 2000);
 
 
 </script>
+-->
 <!-- FINE java 
 
 
