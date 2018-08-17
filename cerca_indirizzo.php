@@ -1,7 +1,3 @@
-<!-- disattivato LOGIN 
-<?php # if (isset($_COOKIE["login"])){ ?>
--->
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -90,7 +86,7 @@ $db = new SQLite3('catasto.db');
 
 
 <label class="input"  for="d" >dug </label> 
-<input type="text" name="d" value="" style="width: 200px"  placeholder="dug : VIA, PIAZZA, VICOLO ...">
+<input type="text" name="d" value="" style="width: 200px"  autofocus placeholder="dug : VIA, PIAZZA, VICOLO ...">
 
 
 <label class="input"  for="s" >strada </label> 
@@ -118,4 +114,4 @@ $db = new SQLite3('catasto.db');
 
 </body>
 </html>
-<!-- disattivato login <?php # } ?> -->
+
