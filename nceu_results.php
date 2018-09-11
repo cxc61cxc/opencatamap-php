@@ -384,31 +384,11 @@ $data=$table_tit['data_nasc'];
     //print "<td>" . $table_tit['stadio'] . "</td>"; 
     // verifico se l'utente è loggato
     
-    if (isset($_COOKIE["login"]))
-              {
-               print "<td style='text-align:left';>" . "<p><a href=\"../anagrafe/anagrafe/index.php?cognome=$cogn&nome=$nom&dug=&descrizione=&civico=&comune_nascita=&data_nascita=$data&search=cerca\" title=\"cerca in anagrafe\" target=\"_blank\">". "anag" ."</a></p>" . "</td>";
-              
-   //print "<td style='text-align:left';><p>"
-  
-  /*
-  html
-  <form name="frmAdd" action="../anagrafe/anagrafe/index.php" target="_blank" method="POST">
-  <input type="hidden" name="cognome" value="<?php echo $cogn;?>">
-  <input type="hidden" name="nome" value="<?php echo $nom;?>">
-  <input type="hidden" name="data_nascita" value="<?php echo $data;?>">
-  <input name="search" type="submit" title="cerca in anagrafe"  value="?" >
-  </form>
-  fine html
-  */
-   //print "</p></td>"
+    
 
     print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$nominativo\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
 
-     }
-              else
-              {
-                 print "<td style='text-align:left';>--</a></p>" . "</td>";
-print "<td style='text-align:left';>" . "<p>". $table_tit['denominazione'] ."</p>" . "</td>";              }
+    
     // fine verifica 
     //print "<td style='text-align:left';><b>" . $table_tit['denominazione'] . "</b></td>";
     print "<td>" . $table_tit['com_nasc'] . "</td>"; 

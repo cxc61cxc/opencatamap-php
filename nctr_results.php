@@ -175,15 +175,10 @@ if ($totRows>0)
         $tipo=$table_tit['tipo'];
         $denomin=$table_tit['denominazione']." ".$table_tit['com_nasc']." ".$table_tit['data_nasc'];
             print "<tr>";
-                if (isset($_COOKIE["login"]))
-                {
+                
                           
                 print "<td style='text-align:left';>" . "<p><a href=\"nctr_soggetto.php?idSog=$idSog&tipo=$tipo&n=$denomin\" target=\"_self\">". $table_tit['denominazione'] ."</a></p>" . "</td>";
-                }
-                else
-                {
-                print "<td style='text-align:left;'>" . "<p>". $table_tit['denominazione'] ."</a></p>" . "</td>";              
-                }
+               
                      
         //print "<td style='text-align:left';>" . $table_tit['denominazione'] . "</td>";
         print "<td>" . $table_tit['com_nasc'] . "</td>"; 
