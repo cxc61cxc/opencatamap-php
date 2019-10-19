@@ -39,10 +39,10 @@ da provare!
    	SET id = ogc_fid
  	WHERE particelle.ogc_fid > 0;
 
-- spostare il file "catasto_cart_4326.sqlite" dalla cartella di lavoro (shp2sqlite) a /var/www/html/ubuntu/catasto/
+- spostare il file "catasto_cart_4326.sqlite" dalla cartella di lavoro ~/Scrivania/shp2sqlite/ a /var/www/html/opencatamap-php/
 
-- impostare a 777 chmod			sudo chmod 777 /var/www/html/ubucomu/catasto/catasto_cart_4326.sqlite
-- impostare a USER-www-data chown	sudo chown cxc:www-data /var/www/html/ubucomu/catasto/catasto_cart_4326.sqlite
+- impostare a 777 chmod			sudo chmod 777 /var/www/html/opencatamap-php/catasto_cart_4326.sqlite
+- impostare a USER-www-data chown	sudo chown cxc:www-data /var/www/html/opencatamap-php/catasto_cart_4326.sqlite
 
 
 --- fatto ciò a me funziona...
